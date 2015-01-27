@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="eValorados-Web" namespace="eValorados_Web.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Almacen" table="TB_ALMACEN" lazy="true" >
+    <id name="Id" column="ID" />
+    <many-to-one name="Agencia">
+      <column name="AGENCIA" sql-type="NUMBER" not-null="true" unique="true" />
+    </many-to-one>
+    <many-to-one name="Valorado">
+      <column name="VALORADO" sql-type="NUMBER" not-null="true" unique="true" />
+    </many-to-one>
+    <property name="CantidadMinima">
+      <column name="CANTIDAD_MINIMA" sql-type="NUMBER" not-null="false" />
+    </property>
+    <property name="CantidadMaxima">
+      <column name="CANTIDAD_MAXIMA" sql-type="NUMBER" not-null="false" />
+    </property>
+    <property name="InventarioVirtual">
+      <column name="INVENTARIO_VIRTUAL" sql-type="NUMBER" not-null="false" />
+    </property>
+    <property name="InventarioReal">
+      <column name="INVENTARIO_REAL" sql-type="NUMBER" not-null="false" />
+    </property>
+    <property name="IsActivo">
+      <column name="ACTIVO" sql-type="NUMBER" not-null="true" />
+    </property>
+    <bag name="Movimiento" inverse="true">
+      <key column="ALMACEN" />
+      <one-to-many class="Movimiento" />
+    </bag>
+  </class>
+</hibernate-mapping>

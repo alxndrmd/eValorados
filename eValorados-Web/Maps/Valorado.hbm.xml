@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="eValorados-Web" namespace="eValorados_Web.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Valorado" table="TB_VALORADO" lazy="true" >
+    <id name="Id" column="ID">
+      <generator class="native">
+        <param name="sequence">SEQ_ID_VALORADO</param>
+      </generator>
+    </id>
+    <many-to-one name="TipoValorado">
+      <column name="TIPO_VALORADO" sql-type="NUMBER" not-null="true" />
+    </many-to-one>
+    <property name="Descripcion">
+      <column name="DESCRIPCION" sql-type="VARCHAR2" not-null="false" />
+    </property>
+    <property name="IdentificadorAdicional">
+      <column name="IDENTIFICADOR_ADICIONAL" sql-type="VARCHAR2" not-null="false" />
+    </property>
+    <property name="IsActivo">
+      <column name="ACTIVO" sql-type="NUMBER" not-null="true" />
+    </property>
+    <bag name="Almacen" inverse="true">
+      <key column="VALORADO" />
+      <one-to-many class="Almacen" />
+    </bag>
+  </class>
+</hibernate-mapping>

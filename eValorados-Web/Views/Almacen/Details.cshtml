@@ -1,0 +1,75 @@
+﻿@model eValorados_Web.Models.Almacen
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Almacen</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Agencia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agencia.Descripcion)
+        </dd>
+
+        <dt>
+            Valorado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valorado.Descripcion)
+        </dd>
+
+        <dt>
+            Cantidad m&iacute;nima
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadMinima)
+        </dd>
+
+        <dt>
+            Cantidad m&aacute;xima
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadMaxima)
+        </dd>
+
+        <dt>
+            Inventario virtual
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventarioVirtual)
+        </dd>
+
+        <dt>
+            Inventario real
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventarioReal)
+        </dd>
+
+        <dt>
+            ¿Activo?
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActivo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Regresar a la lista", "Index")
+</p>

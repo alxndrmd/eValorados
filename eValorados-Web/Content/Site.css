@@ -1,0 +1,60 @@
+﻿body {
+    font-size: 12px;
+    margin: 8px;
+    line-height: 20px;
+    background: url(img/bck.png);
+}
+
+.logo {
+	text-align: left;
+	padding: 15px 0px 30px 0px;
+	min-height: 100px;
+}
+
+.page {
+	border-width: 10px;
+	border-style: solid;
+	z-index: 10;
+	position: relative;
+	padding: 22px;
+}
+
+.normal-page {
+	background: #f1f1f1;
+}
+
+.title-wrapper {
+	background-color: #090909;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}

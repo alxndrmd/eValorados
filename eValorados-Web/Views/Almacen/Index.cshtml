@@ -1,0 +1,74 @@
+﻿@model IEnumerable<eValorados_Web.Models.Almacen>
+
+@{
+    ViewBag.PageSection = "Lista de almacenes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Crear nuevo almacen", "Create")
+</p>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Agencia)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Valorado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CantidadMinima)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CantidadMaxima)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InventarioVirtual)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InventarioReal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActivo)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Agencia.Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Valorado.Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CantidadMinima)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CantidadMaxima)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InventarioVirtual)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InventarioReal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActivo)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Modificar", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Detalle", "Details", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            </table>
+        </div>
+    </div>

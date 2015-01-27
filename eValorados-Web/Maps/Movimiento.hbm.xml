@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="eValorados-Web" namespace="eValorados_Web.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Movimiento" table="TB_MOVIMIENTO" lazy="true" >
+    <id name="Id" column="ID" />
+    <many-to-one name="Almacen">
+      <column name="ALMACEN" sql-type="NUMBER" not-null="true" />
+    </many-to-one>
+    <many-to-one name="MotivoMovimiento">
+      <column name="MOTIVO_MOVIMIENTO" sql-type="NUMBER" not-null="false" />
+    </many-to-one>
+    <many-to-one name="TipoMovimiento">
+      <column name="TIPO_MOVIMIENTO" sql-type="NUMBER" not-null="true" />
+    </many-to-one>
+    <property name="OtroMotivoMovimiento">
+      <column name="OTRO_MOTIVO_MOVIMIENTO" sql-type="VARCHAR2" not-null="false" />
+    </property>
+    <property name="Cantidad">
+      <column name="CANTIDAD" sql-type="NUMBER" not-null="true" />
+    </property>
+    <property name="FechaMovimiento">
+      <column name="FECHA_MOVIMIENTO" sql-type="DATE" not-null="false" />
+    </property>
+    <property name="IsTerminado">
+      <column name="TERMINADO" sql-type="NUMBER" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

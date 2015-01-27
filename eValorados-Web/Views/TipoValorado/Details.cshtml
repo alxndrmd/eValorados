@@ -1,0 +1,43 @@
+﻿@model eValorados_Web.Models.TipoValorado
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TipoValorado</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            #
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            Descripci&oacute;n
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            ¿Activo?
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActivo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Regresar a la lista", "Index")
+</p>

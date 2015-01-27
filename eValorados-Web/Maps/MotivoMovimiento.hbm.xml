@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="eValorados-Web" namespace="eValorados_Web.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="MotivoMovimiento" table="TB_MOTIVO_MOVIMIENTO" lazy="true" >
+    <id name="Id" column="ID" />
+    <property name="Descripcion">
+      <column name="DESCRIPCION" sql-type="VARCHAR2" not-null="false" />
+    </property>
+    <property name="IsActivo">
+      <column name="ACTIVO" sql-type="NUMBER" not-null="true" />
+    </property>
+    <bag name="Movimiento" inverse="true">
+      <key column="MOTIVO_MOVIMIENTO" />
+      <one-to-many class="Movimiento" />
+    </bag>
+  </class>
+</hibernate-mapping>

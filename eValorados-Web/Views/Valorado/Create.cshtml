@@ -1,0 +1,65 @@
+﻿@model eValorados_Web.Models.Valorado
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Valorado</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Tipo de valorado</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TipoValorado.Id, new SelectList((IEnumerable<eValorados_Web.Models.TipoValorado>)ViewData["TipoValorado"], "Id", "Descripcion"))
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Descripci&oacute;n</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descripcion)
+                @Html.ValidationMessageFor(model => model.Descripcion)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Identificador Adicional</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IdentificadorAdicional)
+                @Html.ValidationMessageFor(model => model.IdentificadorAdicional)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">¿Activo?</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsActivo)
+                @Html.ValidationMessageFor(model => model.IsActivo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
