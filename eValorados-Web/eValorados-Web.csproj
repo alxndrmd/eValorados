@@ -124,6 +124,7 @@
     <Compile Include="Controllers\AgenciaController.cs" />
     <Compile Include="Controllers\AlmacenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MotivoMovimientoController.cs" />
     <Compile Include="Controllers\TipoAgenciaController.cs" />
     <Compile Include="Controllers\TipoValoradoController.cs" />
     <Compile Include="Controllers\ValoradoController.cs" />
@@ -226,6 +227,10 @@
     <Content Include="Views\TipoAgencia\Details.cshtml" />
     <Content Include="Views\TipoAgencia\Create.cshtml" />
     <Content Include="Views\TipoAgencia\Edit.cshtml" />
+    <Content Include="Views\MotivoMovimiento\Index.cshtml" />
+    <Content Include="Views\MotivoMovimiento\Details.cshtml" />
+    <Content Include="Views\MotivoMovimiento\Create.cshtml" />
+    <Content Include="Views\MotivoMovimiento\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
