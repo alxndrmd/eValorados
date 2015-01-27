@@ -125,6 +125,7 @@
     <Compile Include="Controllers\AlmacenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TipoAgenciaController.cs" />
+    <Compile Include="Controllers\TipoMovimientoController.cs" />
     <Compile Include="Controllers\TipoValoradoController.cs" />
     <Compile Include="Controllers\ValoradoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -226,6 +227,9 @@
     <Content Include="Views\TipoAgencia\Details.cshtml" />
     <Content Include="Views\TipoAgencia\Create.cshtml" />
     <Content Include="Views\TipoAgencia\Edit.cshtml" />
+    <Content Include="Views\TipoMovimiento\Details.cshtml" />
+    <Content Include="Views\TipoMovimiento\Index.cshtml" />
+    <Content Include="Views\TipoMovimiento\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

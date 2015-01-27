@@ -1,0 +1,50 @@
+﻿@model IEnumerable<eValorados_Web.Models.TipoMovimiento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Crear nuevo Index", "Create")
+</p>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<table class="table">
+		<thead>
+			<tr>
+								<th>
+					@Html.DisplayNameFor(model => model.Descripcion)
+				</th>
+								<th>
+					@Html.DisplayNameFor(model => model.Accion)
+				</th>
+								<th>
+					@Html.DisplayNameFor(model => model.IsActivo)
+				</th>
+						<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (var item in Model) {
+			<tr>
+								<td>
+					@Html.DisplayFor(modelItem => item.Descripcion)
+				</td>
+								<td>
+					@Html.DisplayFor(modelItem => item.Accion)
+				</td>
+								<td>
+					@Html.DisplayFor(modelItem => item.IsActivo)
+				</td>
+						<td>
+					@Html.ActionLink("Modificar", "Edit", new { /* id=item.PrimaryKey */ }) |
+					@Html.ActionLink("Detalle", "Details", new { /* id=item.PrimaryKey */ }) |
+					@Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ })
+				</td>
+					</tr>
+		}
+		</tbody>
+		</table>
+	</div>
+</div>

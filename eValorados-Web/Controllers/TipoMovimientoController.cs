@@ -9,52 +9,41 @@ using System.Web.Mvc;
 
 namespace eValorados_Web.Controllers
 {
-    public class TipoValoradoController : Controller
+    public class TipoMovimientoController : Controller
     {
-        private TipoValoradoDAO _tipoValoradoDAO = null;
-        private TipoValoradoDAO TipoValoradoDAO
+        private TipoMovimientoDAO _tipoMovimientoDAO = null;
+        private TipoMovimientoDAO tipoMovimientoDAO
         {
             get
             {
-                if (_tipoValoradoDAO == null)
-                    _tipoValoradoDAO = new TipoValoradoDAO();
-                return _tipoValoradoDAO;
+                if (_tipoMovimientoDAO == null)
+                    _tipoMovimientoDAO = new TipoMovimientoDAO();
+                return _tipoMovimientoDAO;
             }
         }
-        //
-        // GET: /TipoValorado/
         public ActionResult Index()
         {
-            var _tipoValorados = TipoValoradoDAO.LoadAll();
-            return View(_tipoValorados);
+            var _tipomovimiento = tipoMovimientoDAO.LoadAll();
+            return View(_tipomovimiento);
         }
-
-        //
-        // GET: /TipoValorado/Details/5
         public ActionResult Details(int id)
         {
-            var _tipoValorado = TipoValoradoDAO.LoadById(id);
-            return View(_tipoValorado);
+            var _tipomovimiento = tipoMovimientoDAO.LoadById(id);
+            return View(_tipomovimiento);
         }
-
-        //
-        // GET: /TipoValorado/Create
         public ActionResult Create()
         {
             return View();
         }
-
-        //
-        // POST: /TipoValorado/Create
         [HttpPost]
-        public ActionResult Create(TipoValorado tipoValorado)
+        public ActionResult Create(TipoMovimiento tipomovimiento)
         {
             try
             {
                 SessionHelper _sessionHelper = new SessionHelper();
                 using (ITransaction transaction = _sessionHelper.Current.BeginTransaction())
                 {
-                    TipoValoradoDAO.Create(tipoValorado);
+                    tipoMovimientoDAO.Create(tipomovimiento);
                     transaction.Commit();
                 }
                 return RedirectToAction("Index");
@@ -64,33 +53,27 @@ namespace eValorados_Web.Controllers
                 return View();
             }
         }
-
-        //
-        // GET: /TipoValorado/Edit/5
         public ActionResult Edit(int id)
         {
-            var _tipoValorado = TipoValoradoDAO.LoadById(id);
-            return View(_tipoValorado);
+            var _tipomovimiento =tipoMovimientoDAO.LoadById(id);
+            return View(_tipomovimiento);
         }
-
-        //
-        // POST: /TipoValorado/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, TipoValorado tipoValorado)
+        public ActionResult Edit(int id, TipoMovimiento tipoMovimiento)
         {
             try
             {
                 SessionHelper _sessionHelper = new SessionHelper();
-                var _tipoValorado = TipoValoradoDAO.LoadById(id);
-                if (!tipoValorado.IsActivo && _tipoValorado.Valorados.Count > 0)
+                var _tipomovimiento = tipoMovimientoDAO.LoadById(id);
+                if (!tipoMovimiento.IsActivo && _tipomovimiento.Movimientos.Count > 0)
                 {
-                    ModelState.AddModelError("CustomError", String.Format("El tipo valorado con id=[{0}] esta siendo usado y no puede desactivarse.", id));
+                    ModelState.AddModelError("CustomError", String.Format("El tipo movimiento con id=[{0}] esta siendo usado y no puede desactivarse.", id));
                     return View();
                 }
                 _sessionHelper.ClearSession();
                 using (ITransaction transaction = _sessionHelper.Current.BeginTransaction())
                 {
-                    TipoValoradoDAO.Update(tipoValorado);
+                    tipoMovimientoDAO.Update(tipoMovimiento);
                     transaction.Commit();
                 }
                 return RedirectToAction("Index");
@@ -100,6 +83,5 @@ namespace eValorados_Web.Controllers
                 return View();
             }
         }
-
-    }
+	}
 }
