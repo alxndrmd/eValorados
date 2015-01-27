@@ -8,7 +8,7 @@ namespace eValorados_Web.Models {
 
     public class Almacen : BaseModel<int> {
         public Almacen() {
-			Movimiento = new List<Movimiento>();
+			Movimientos = new List<Movimiento>();
         }
         [DisplayName("Agencia")]
         public virtual Agencia Agencia { get; set; }
@@ -24,6 +24,6 @@ namespace eValorados_Web.Models {
         public virtual int? InventarioReal { get; set; }
         [DisplayName("¿Está activo?")]
         public virtual bool IsActivo { get; set; }
-        public virtual IList<Movimiento> Movimiento { get; set; }
+        public virtual IList<Movimiento> Movimientos { get; set; }
     }
 }

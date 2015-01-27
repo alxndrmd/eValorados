@@ -8,7 +8,7 @@ namespace eValorados_Web.Models {
     
     public class Agencia : BaseModel<int> {
         public Agencia() {
-			Almacen = new List<Almacen>();
+			Almacenes = new List<Almacen>();
         }
         [DisplayName("Tipo de agencia")]
         public virtual TipoAgencia TipoAgencia { get; set; }
@@ -18,6 +18,6 @@ namespace eValorados_Web.Models {
         public virtual string Direccion { get; set; }
         [DisplayName("¿Está activo?")]
         public virtual bool IsActivo { get; set; }
-        public virtual IList<Almacen> Almacen { get; set; }
+        public virtual IList<Almacen> Almacenes { get; set; }
     }
 }
