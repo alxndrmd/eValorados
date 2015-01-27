@@ -85,7 +85,7 @@ namespace eValorados_Web.Controllers
             try
             {
                 var _MotivoMovimiento = MotivoMovimientoDAO.LoadById(id);
-                if (!MotivoMovimiento.IsActivo && MotivoMovimiento.Movimientos.Count > 0)
+                if (!MotivoMovimiento.IsActivo && _MotivoMovimiento.Movimientos.Count > 0)
                 {
                     ModelState.AddModelError("CustomError", String.Format("No es posible desactivar el MotivoMovimiento con id=[{0}] porque todavía cuenta con Movimiento.", id));
                     return View();

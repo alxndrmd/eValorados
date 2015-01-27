@@ -59,13 +59,13 @@ namespace eValorados_Web.Controllers
             return View(_tipomovimiento);
         }
         [HttpPost]
-        public ActionResult Edit(int id, TipoMovimiento tipoMovimiento)
+        public ActionResult Edit(int id, TipoMovimiento TipoMovimiento)
         {
             try
             {
                 SessionHelper _sessionHelper = new SessionHelper();
-                var _tipomovimiento = tipoMovimientoDAO.LoadById(id);
-                if (!tipoMovimiento.IsActivo && _tipomovimiento.Movimientos.Count > 0)
+                var _Tipomovimiento = tipoMovimientoDAO.LoadById(id);
+                if (!TipoMovimiento.IsActivo && _Tipomovimiento.Movimientos.Count > 0)
                 {
                     ModelState.AddModelError("CustomError", String.Format("El tipo movimiento con id=[{0}] esta siendo usado y no puede desactivarse.", id));
                     return View();
@@ -73,7 +73,7 @@ namespace eValorados_Web.Controllers
                 _sessionHelper.ClearSession();
                 using (ITransaction transaction = _sessionHelper.Current.BeginTransaction())
                 {
-                    tipoMovimientoDAO.Update(tipoMovimiento);
+                    tipoMovimientoDAO.Update(TipoMovimiento);
                     transaction.Commit();
                 }
                 return RedirectToAction("Index");

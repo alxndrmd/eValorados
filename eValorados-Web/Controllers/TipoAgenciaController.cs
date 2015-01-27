@@ -80,14 +80,14 @@ namespace eValorados_Web.Controllers
         {
             try
             {
+                SessionHelper _sessionHelper = new SessionHelper();
                 var _TipoAgencia = TipoAgenciaDAO.LoadById(id);
-                if ( TipoAgencia.IsActivo && !TipoAgencia.IsActivo && _TipoAgencia.Agencias.Count > 0)
+                if (!TipoAgencia.IsActivo && _TipoAgencia.Agencias.Count > 0)
                 {
-                    ModelState.AddModelError("CustomError", String.Format("El TipoAgencia con id=[{0}] esta siendo usado y no puede desactivarse", id));
+                    ModelState.AddModelError("CustomError", String.Format("El TipoAgencia cons id=[{0}] esta siendo usado y no puede desactivarse.", id));
                     return View();
                 }
-
-                SessionHelper _sessionHelper = new SessionHelper();
+                _sessionHelper.ClearSession();
                 using (ITransaction transaction = _sessionHelper.Current.BeginTransaction())
                 {
                     TipoAgenciaDAO.Update(TipoAgencia);
