@@ -18,7 +18,7 @@
     <property name="IsActivo">
       <column name="ACTIVO" sql-type="NUMBER" not-null="true" />
     </property>
-    <bag name="Almacen" inverse="true">
+    <bag name="Almacenes" inverse="true">
       <key column="VALORADO" />
       <one-to-many class="Almacen" />
     </bag>

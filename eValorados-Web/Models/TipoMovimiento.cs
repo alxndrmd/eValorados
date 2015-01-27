@@ -7,7 +7,7 @@ namespace eValorados_Web.Models {
 
     public class TipoMovimiento : BaseModel<int> {
         public TipoMovimiento() {
-			Movimiento = new List<Movimiento>();
+			Movimientos = new List<Movimiento>();
         }
         public virtual string Descripcion { get; set; }
         public virtual string Accion { get; set; }

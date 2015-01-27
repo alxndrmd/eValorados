@@ -8,7 +8,7 @@
     <property name="IsActivo">
       <column name="ACTIVO" sql-type="NUMBER" not-null="true" />
     </property>
-    <bag name="Movimiento" inverse="true">
+    <bag name="Movimientos" inverse="true">
       <key column="MOTIVO_MOVIMIENTO" />
       <one-to-many class="Movimiento" />
     </bag>

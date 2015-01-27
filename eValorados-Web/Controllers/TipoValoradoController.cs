@@ -80,6 +80,13 @@ namespace eValorados_Web.Controllers
         {
             try
             {
+                var _tipoValorado = TipoValoradoDAO.LoadById(id);
+                if (_tipoValorado.IsActivo && !tipoValorado.IsActivo && _tipoValorado.Valorados.Count > 0)
+                {
+                    ModelState.AddModelError("CustomError", String.Format("El tipo valorado con id=[{0}] esta siendo usado y no puede desactivarse", id));
+                    return View();
+                }
+
                 SessionHelper _sessionHelper = new SessionHelper();
                 using (ITransaction transaction = _sessionHelper.Current.BeginTransaction())
                 {
