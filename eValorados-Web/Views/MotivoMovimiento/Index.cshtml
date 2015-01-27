@@ -1,4 +1,4 @@
-﻿@model IEnumerable<eValorados_Web.Models.TipoAgencia>
+﻿@model IEnumerable<eValorados_Web.Models.MotivoMovimiento>
 
 @{
     ViewBag.Title = "Index";
@@ -19,9 +19,6 @@
 					@Html.DisplayNameFor(model => model.Descripcion)
 				</th>
 								<th>
-					@Html.DisplayNameFor(model => model.IsCentral)
-				</th>
-								<th>
 					@Html.DisplayNameFor(model => model.IsActivo)
 				</th>
 						<th></th>
@@ -29,6 +26,7 @@
 		</thead>
 		<tbody>
 		@foreach (var item in Model) {
+            
 			<tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Id)
@@ -37,15 +35,12 @@
 					@Html.DisplayFor(modelItem => item.Descripcion)
 				</td>
 								<td>
-					@Html.DisplayFor(modelItem => item.IsCentral)
-				</td>
-								<td>
 					@Html.DisplayFor(modelItem => item.IsActivo)
 				</td>
 						<td>
 					@Html.ActionLink("Modificar", "Edit", new { id = item.Id }) |
 					@Html.ActionLink("Detalle", "Details", new { id = item.Id }) |
-					
+				
 				</td>
 					</tr>
 		}

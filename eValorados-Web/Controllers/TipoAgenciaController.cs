@@ -81,9 +81,9 @@ namespace eValorados_Web.Controllers
             try
             {
                 var _TipoAgencia = TipoAgenciaDAO.LoadById(id);
-                if (!TipoAgencia.IsActivo && _TipoAgencia.Agencias.Count > 0)
+                if ( TipoAgencia.IsActivo && !TipoAgencia.IsActivo && _TipoAgencia.Agencias.Count > 0)
                 {
-                    ModelState.AddModelError("CustomError", String.Format("El tipo valorado con id=[{0}] esta siendo usado y no puede desactivarse", id));
+                    ModelState.AddModelError("CustomError", String.Format("El TipoAgencia con id=[{0}] esta siendo usado y no puede desactivarse", id));
                     return View();
                 }
 
