@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\TipoAgencia\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Controllers\AgenciaController.cs" />
     <Compile Include="Controllers\AlmacenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TipoAgenciaController.cs" />
     <Compile Include="Controllers\TipoValoradoController.cs" />
     <Compile Include="Controllers\ValoradoController.cs" />
     <Compile Include="Global.asax.cs">
