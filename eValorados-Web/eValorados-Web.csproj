@@ -116,7 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\TipoAgencia\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeTemplates\App_Start\BundleConfig.cs" />
@@ -223,6 +222,10 @@
     <Content Include="Views\Agencia\Create.cshtml" />
     <Content Include="Views\Agencia\Edit.cshtml" />
     <Content Include="Views\Almacen\Index.cshtml" />
+    <Content Include="Views\TipoAgencia\Index.cshtml" />
+    <Content Include="Views\TipoAgencia\Details.cshtml" />
+    <Content Include="Views\TipoAgencia\Create.cshtml" />
+    <Content Include="Views\TipoAgencia\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
