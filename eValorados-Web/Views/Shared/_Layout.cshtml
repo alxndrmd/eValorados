@@ -31,9 +31,21 @@
                 <div class="collapse navbar-collapse" id="main-navbar">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("TipoValorado", "Index", "TipoValorado")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mantenimientos <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Tipo Valorado", "Index", "TipoValorado")</li>
+                                <li>@Html.ActionLink("Valorado", "Index", "Valorado")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("TipoAgencia", "Index", "TipoAgencia")</li>
+                                <li>@Html.ActionLink("Agencia", "Index", "Agencia")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Almacen", "Index", "Almacen")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Motivo Movimiento", "Index", "MotivoMovimiento")</li>
+                                <li>@Html.ActionLink("Tipo Movimiento", "Index", "TipoMovimiento")</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
