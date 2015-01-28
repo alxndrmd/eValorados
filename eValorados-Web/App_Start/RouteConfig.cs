@@ -18,6 +18,11 @@ namespace eValorados_Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute("LoadValoradoByAgencia",
+                            "Movimiento/LoadValoradoByAgencia/",
+                            new { controller = "Movimiento", action = "LoadValoradoByAgencia" },
+                            new[] { "eValorados_Web.Controllers" });
         }
     }
 }

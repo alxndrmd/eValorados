@@ -17,8 +17,37 @@
         <div class="form-group">
             <label class="control-label col-md-2">Agencia</label>
             <div class="col-md-10">
-                @Html.DropDownList("Agencia", new SelectList((IEnumerable<eValorados_Web.Models.Agencia>)ViewData["Agencias"], "Id", "Descripcion"))
+                @Html.DropDownList("Agencia", new SelectList((IEnumerable<eValorados_Web.Models.Agencia>)ViewData["Agencias"], "Id", "Descripcion"), "Seleciona una agencia")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Agencia</label>
+            <div class="col-md-10">
+                <select id="Valorado" name="Valorado">
+                </select>
             </div>
         </div>
     </div>
 }
+<script type="text/javascript">
+    $(function () {
+        $("#Agencia").change(function () {
+             $.ajax({
+                 cache: false,
+                 type: "GET",
+                 url: "@(Url.RouteUrl("LoadValoradoByAgencia"))",
+                 data: { "id": $(this).val() },
+                    success: function (data) {
+                        $("#Valorado").html('');
+                        $.each(data, function (id, option) {
+                            $("#Valorado").append($('<option></option>').val(option.Id).html(option.Descripcion));
+                        });
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('No se pudo recuperar los valorados.');
+                    }
+                });
+            });
+        });
+</script> 

@@ -119,9 +119,9 @@
     <Folder Include="Views\Ajustar\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeTemplates\App_Start\BundleConfig.cs" />
-    <Compile Include="CodeTemplates\App_Start\FilterConfig.cs" />
-    <Compile Include="CodeTemplates\App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AgenciaController.cs" />
     <Compile Include="Controllers\AjustesController.cs" />
     <Compile Include="Controllers\MovimientoController.cs" />
