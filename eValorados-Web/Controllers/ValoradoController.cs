@@ -52,7 +52,8 @@ namespace eValorados_Web.Controllers
         // GET: /Valorado/Create
         public ActionResult Create()
         {
-            ViewData["TipoValorado"] = TipoValoradoDAO.LoadAll();//.Select(x => new SelectListItem() { Text = x.Descripcion, Value = x.Id.ToString() });
+            //ViewData["TipoValorado"] = TipoValoradoDAO.LoadAll();//.Select(x => new SelectListItem() { Text = x.Descripcion, Value = x.Id.ToString() });
+            ViewData["TipoValorado"] = ValoradoDAO.Obtenerlistavaloradoporalmacen();
             return View();
         }
 
