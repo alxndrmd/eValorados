@@ -14,17 +14,20 @@
             <thead>
                 <tr>
                     <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.Agencia)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Valorado)
                     </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.CantidadMinima)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.CantidadMaxima)
-                    </th>
+                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.InventarioVirtual)
                     </th>
@@ -42,17 +45,21 @@
                 {
                     <tr>
                         <td>
+                            @Html.DisplayFor(modelItem => item.Agencia.Id)
+                        </td>
+
+                        <td>
                             @Html.DisplayFor(modelItem => item.Agencia.Descripcion)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Valorado.Descripcion)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.CantidadMinima)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CantidadMaxima)
-                        </td>
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.InventarioVirtual)
                         </td>
