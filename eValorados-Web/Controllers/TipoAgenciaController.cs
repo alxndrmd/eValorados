@@ -87,6 +87,16 @@ namespace eValorados_Web.Controllers
                     ModelState.AddModelError("CustomError", String.Format("El TipoAgencia cons id=[{0}] esta siendo usado y no puede desactivarse.", id));
                     return View();
                 }
+
+
+                var a =TipoAgenciaDAO.solouncentral();
+                if (a.Count > 0)
+                {
+                    ModelState.AddModelError("CustomError", String.Format("Solo puede haber una agencia central."));
+                    return View();
+                }
+
+
                 _sessionHelper.ClearSession();
                 using (ITransaction transaction = _sessionHelper.Current.BeginTransaction())
                 {
