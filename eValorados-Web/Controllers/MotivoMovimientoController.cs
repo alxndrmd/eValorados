@@ -84,13 +84,14 @@ namespace eValorados_Web.Controllers
         {
             try
             {
+                SessionHelper _sessionHelper = new SessionHelper();
                 var _MotivoMovimiento = MotivoMovimientoDAO.LoadById(id);
                 if (!MotivoMovimiento.IsActivo && _MotivoMovimiento.Movimientos.Count > 0)
                 {
-                    ModelState.AddModelError("CustomError", String.Format("No es posible desactivar el MotivoMovimiento con id=[{0}] porque todavía cuenta con Movimiento.", id));
+                    ModelState.AddModelError("CustomError", String.Format("El MotivoMovimiento cons id=[{0}] esta siendo usado y no puede desactivarse.", id));
                     return View();
                 }
-                SessionHelper _sessionHelper = new SessionHelper();
+                _sessionHelper.ClearSession();
                 using (ITransaction transaction = _sessionHelper.Current.BeginTransaction())
                 {
                     MotivoMovimientoDAO.Update(MotivoMovimiento);
