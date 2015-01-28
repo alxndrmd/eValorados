@@ -72,7 +72,7 @@ namespace eValorados_Web.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return View();
             }
