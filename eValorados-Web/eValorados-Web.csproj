@@ -117,7 +117,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Ajustes\" />
-    <Folder Include="Views\Ajuste\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeTemplates\App_Start\BundleConfig.cs" />

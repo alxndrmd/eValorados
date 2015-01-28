@@ -110,15 +110,17 @@ namespace eValorados_Web.Controllers
                     //o el almacen ya esta desactivo
 
                 if (almacen.CantidadMaxima < _almacen.InventarioReal && almacen.CantidadMaxima < _almacen.InventarioVirtual)
-                    {
+                {
                         ModelState.AddModelError("CustomError", String.Format("no es posible desactivar el almacen porque algun inventario sobrepasa a la cantidad maxima", id));
-                    if (!almacen.IsActivo && (_almacen.InventarioReal > 0 || _almacen.InventarioVirtual > 0))
-                        {
-                            ModelState.AddModelError("CustomError", String.Format("No es posible desactivar el almacen con id=[{0}] porque todavía cuenta con inventario.", id));
-                        }
-                    return View();  
-                    }   
-                
+                       
+                  return View();
+                }
+
+                if (!almacen.IsActivo && (_almacen.InventarioReal > 0 || _almacen.InventarioVirtual > 0))
+                {
+                    ModelState.AddModelError("CustomError", String.Format("No es posible desactivar el almacen con id=[{0}] porque todavía cuenta con inventario.", id));
+                    return View();
+                }
                 SessionHelper _sessionHelper = new SessionHelper();
                 using (ITransaction transaction = _sessionHelper.Current.BeginTransaction())
                 {
