@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Ajustar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ajustar</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Valorado</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Agencia</label>
+            <div class="col-md-10">
+                @Html.DropDownList("Agencia", new SelectList((IEnumerable<eValorados_Web.Models.Agencia>)ViewData["Agencias"], "Id", "Descripcion"))
+            </div>
+        </div>
+    </div>
+}

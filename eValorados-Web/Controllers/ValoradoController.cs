@@ -52,8 +52,8 @@ namespace eValorados_Web.Controllers
         // GET: /Valorado/Create
         public ActionResult Create()
         {
-            //ViewData["TipoValorado"] = TipoValoradoDAO.LoadAll();//.Select(x => new SelectListItem() { Text = x.Descripcion, Value = x.Id.ToString() });
-            ViewData["TipoValorado"] = ValoradoDAO.Obtenerlistavaloradoporalmacen();
+            ViewData["TipoValorado"] = TipoValoradoDAO.LoadAll().Where(x => x.IsActivo == true);//.Select(x => new SelectListItem() { Text = x.Descripcion, Value = x.Id.ToString() });
+            //ViewData["TipoValorado"] = ValoradoDAO.Obtenerlistavaloradoporalmacen();
             return View();
         }
 
@@ -83,7 +83,7 @@ namespace eValorados_Web.Controllers
         public ActionResult Edit(int id)
         {
             SessionHelper sessionHelper = new SessionHelper();
-            ViewData["TipoValorado"] = TipoValoradoDAO.LoadAll();
+            ViewData["TipoValorado"] = TipoValoradoDAO.LoadAll().Where(x => x.IsActivo == true);
             Valorado valorado = ValoradoDAO.LoadById(id);
             return View(valorado);
         }

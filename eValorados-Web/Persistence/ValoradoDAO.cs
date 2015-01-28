@@ -12,15 +12,9 @@ namespace eValorados_Web.Persistence
 {
     public  class ValoradoDAO :  BaseDao<Valorado, int>
     {
-        public IList<String> Obtenerlistavaloradoporalmacen()
+        public IList<Valorado> loadValoradoByAgencia(Agencia agencia)
         {
-            using (ISession sesion = new NHibernateHelper().OpenSession())
-            {
-                return sesion.CreateQuery("SELECT A.VALORADO FROM TB_ALMACEN A INNER JOIN TB_AGENCIA AG ON A.AGENCIA = AG.ID WHERE A.AGENCIA = '23'").List<String>();
-                
-                return sesion.QueryOver<ValoradoDAO>().    .Where(Restrictions.Eq("Agencia", Agencia)).List<ValoradoDAO>();
-            }
+            return CurrentSession.QueryOver<Valorado>().JoinQueryOver<Almacen>(x => x.Almacenes).Where(x => x.Agencia == agencia).List<Valorado>();
         }
-
     }
 }
