@@ -62,7 +62,8 @@ namespace eValorados_Web.Controllers
             ViewData["Agencias"] = AgenciaDAO.LoadAll();
             ViewData["Valorados"] = ValoradoDAO.loadValoradoByAgencia();
             ViewData["TipoMovimiento"]= TipoMovimientoDAO.LoadAll();
-            return View();
+
+            return View(aaaa);
 
 
         
