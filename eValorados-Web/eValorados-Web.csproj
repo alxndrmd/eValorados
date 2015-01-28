@@ -116,13 +116,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Ajustes\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeTemplates\App_Start\BundleConfig.cs" />
     <Compile Include="CodeTemplates\App_Start\FilterConfig.cs" />
     <Compile Include="CodeTemplates\App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AgenciaController.cs" />
+    <Compile Include="Controllers\MovimientoController.cs" />
     <Compile Include="Controllers\AlmacenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MotivoMovimientoController.cs" />
@@ -237,6 +237,7 @@
     <Content Include="Views\TipoMovimiento\Index.cshtml" />
     <Content Include="Views\TipoMovimiento\Create.cshtml" />
     <Content Include="Views\TipoMovimiento\Edit.cshtml" />
+    <Content Include="Views\Movimiento\Ajustar.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
