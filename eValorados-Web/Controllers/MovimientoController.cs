@@ -47,16 +47,17 @@ namespace eValorados_Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult LoadValoradoByAgencia(String id)
+        public ActionResult LoadValoradoByAgencia(String AgenciaId)
         {
-            int _id = 0;
-            bool isInt = int.TryParse(id, out _id);
+            int _AgenciaId = 0;
+            bool isInt = int.TryParse(AgenciaId, out _AgenciaId);
             if (isInt)
             {
-                var _agencia = AgenciaDAO.LoadById(_id);
+                var _agencia = AgenciaDAO.LoadById(_AgenciaId);
                 if (_agencia != null)
                 {
-                    var _valorados = ValoradoDAO.loadValoradoByAgencia(_agencia).Select(x => new { Id = x.Id, Descripcion = x.Descripcion }).ToList();
+                    var _valorados = ValoradoDAO.loadValoradoByAgencia(_agencia).Where(x => x.IsActivo == true).Select(x => new { Id = x.Id.ToString(), Descripcion = x.Descripcion }).ToList();
+                    _valorados.Insert(0, new { Id = string.Empty, Descripcion = "Seleciona un valorado" });
                     return Json(_valorados, JsonRequestBehavior.AllowGet);
                 }
             }
