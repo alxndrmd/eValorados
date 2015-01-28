@@ -235,6 +235,7 @@
     <Content Include="Views\TipoMovimiento\Details.cshtml" />
     <Content Include="Views\TipoMovimiento\Index.cshtml" />
     <Content Include="Views\TipoMovimiento\Create.cshtml" />
+    <Content Include="Views\TipoMovimiento\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
