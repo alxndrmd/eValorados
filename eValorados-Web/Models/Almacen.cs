@@ -2,6 +2,8 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
 
 
 namespace eValorados_Web.Models {
@@ -14,10 +16,15 @@ namespace eValorados_Web.Models {
         public virtual Agencia Agencia { get; set; }
         [DisplayName("Valorado")]
         public virtual Valorado Valorado { get; set; }
+        
+        [Range(0, 9999)]
         [DisplayName("Cantidad Mínima")]
         public virtual int? CantidadMinima { get; set; }
+        
+        [Range(0,9999)]
         [DisplayName("Cantidad Máxima")]
         public virtual int? CantidadMaxima { get; set; }
+
         [DisplayName("Inventario Virtual")]
         public virtual int? InventarioVirtual { get; set; }
         [DisplayName("Inventario Real")]
