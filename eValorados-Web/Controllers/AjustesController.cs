@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using eValorados_Web.Models;
 
 namespace eValorados_Web.Controllers
 {
@@ -57,23 +58,16 @@ namespace eValorados_Web.Controllers
         {
             return View();
         }
-        public ActionResult Ajustar()
+        public ActionResult Ajustar(Agencia agencia)
         {
             ViewData["Agencias"] = AgenciaDAO.LoadAll();
-            ViewData["Valorados"] = ValoradoDAO.loadValoradoByAgencia();
-            ViewData["TipoMovimiento"]= TipoMovimientoDAO.LoadAll();
+            ViewData["Valorados"] = ValoradoDAO.loadValoradoByAgencia(agencia);
+            ViewData["TipoMovimiento"] = TipoMovimientoDAO.LoadAll();
 
-            return View(aaaa);
+            return View();
 
 
-        
-};
+
         }
-
-        //
-        // POST: /Almacen/Create
-        [HttpPost]
-      
-        }
-	}
+    }
 }
