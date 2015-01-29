@@ -34,9 +34,22 @@ namespace eValorados_Web.Controllers
             }
         }
 
+        private TipoMovimientoDAO _TipoMovimientoDAO = null;
+
+        private TipoMovimientoDAO TipoMovimientoDAO
+        {
+            get
+            {
+                if (_TipoMovimientoDAO == null)
+                    _TipoMovimientoDAO = new TipoMovimientoDAO();
+                return _TipoMovimientoDAO;
+            }
+        }
+
         public ActionResult Ajustar()
         {
             ViewData["Agencias"] = AgenciaDAO.LoadAll().Where(x => x.IsActivo == true);
+            ViewData["TipoMovimiento"] = TipoMovimientoDAO.LoadAll();
             return View();
         }
 

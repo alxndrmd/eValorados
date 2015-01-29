@@ -28,6 +28,26 @@
                 @Html.DropDownListFor(model => model.Almacen.Valorado.Id, Enumerable.Empty<SelectListItem>(), "Selecciona un valorado")
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Tipo Movimiento </label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TipoMovimiento.Id, new SelectList((IEnumerable<eValorados_Web.Models.TipoMovimiento>)ViewData["TipoMovimiento"], "Id", "Descripcion"))
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cantidad, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cantidad)
+                @Html.ValidationMessageFor(model => model.Cantidad)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ACEPTAR" class="btn btn-default" />
+            </div>
+        </div>
     </div>
 }
 <script type="text/javascript">
