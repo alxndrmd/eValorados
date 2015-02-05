@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="existeUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="existeUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="existeUsuarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFullName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFullNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFullNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupMembership">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupMembershipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGroupMembershipResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthenticateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dominio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AuthenticateUserResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUserToGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="system" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUserToGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AuthenticateUserToGroupResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="valida_user">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="system" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="valida_userResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="valida_userResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Search">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="property" type="tns:ADProperties" />
+            <s:element minOccurs="0" maxOccurs="1" name="propertyValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ADProperties">
+        <s:restriction base="s:string">
+          <s:enumeration value="distinguishedName" />
+          <s:enumeration value="displayName" />
+          <s:enumeration value="telephoneNumber" />
+          <s:enumeration value="samAccountName" />
+          <s:enumeration value="manager" />
+          <s:enumeration value="title" />
+          <s:enumeration value="department" />
+          <s:enumeration value="givenName" />
+          <s:enumeration value="sn" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchResult" type="tns:ArrayOfLDAPSearchResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLDAPSearchResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LDAPSearchResult" nillable="true" type="tns:LDAPSearchResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LDAPSearchResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="displayName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="telephoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="samAccountName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="manager" type="tns:LDAPSearchResult" />
+          <s:element minOccurs="0" maxOccurs="1" name="distinguishedName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="department" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuntetificarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sistema" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuntetificarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuntetificarUsuarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getusuarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="usuario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sistema" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getusuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getusuariosResult" type="tns:ArrayOfUsuarioDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUsuarioDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UsuarioDTO" nillable="true" type="tns:UsuarioDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UsuarioDTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Usuario" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getopciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getopcionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getopcionesResult" type="tns:ArrayOfOpcionDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOpcionDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OpcionDTO" nillable="true" type="tns:OpcionDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OpcionDTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="codigo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegistraLogAuditoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="system" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="codUsuario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="screen" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupDet" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="group" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="preValue" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newValue" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="field" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reference" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistraLogAuditoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistraLogAuditoriaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listaGrupo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="system" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listaGrupoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listaGrupoResult" type="tns:ArrayOfGrupoDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGrupoDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GrupoDTO" nillable="true" type="tns:GrupoDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GrupoDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Sistema" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Menu" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="listaGrupoDetalle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="system" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listaGrupoDetalleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listaGrupoDetalleResult" type="tns:ArrayOfGrupoDetalleDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGrupoDetalleDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GrupoDetalleDTO" nillable="true" type="tns:GrupoDetalleDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GrupoDetalleDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Detalle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Grupo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sistema" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getGeneralData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="system" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getGeneralDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getGeneralDataResult" type="tns:DatosDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Dominio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Autenticacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sistema" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="obtieneSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="islog" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idusuario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sistema" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hostname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="maquina" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtieneSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="obtieneSessionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtieneCodUsua">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtieneCodUsuaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codusua" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtieneNombre">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtieneNombreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ap" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="am" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="existeUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:existeUsuario" />
+  </wsdl:message>
+  <wsdl:message name="existeUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:existeUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFullNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFullName" />
+  </wsdl:message>
+  <wsdl:message name="GetFullNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFullNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupMembershipSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGroupMembership" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupMembershipSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGroupMembershipResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateUser" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserToGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserToGroup" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserToGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserToGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="valida_userSoapIn">
+    <wsdl:part name="parameters" element="tns:valida_user" />
+  </wsdl:message>
+  <wsdl:message name="valida_userSoapOut">
+    <wsdl:part name="parameters" element="tns:valida_userResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchSoapIn">
+    <wsdl:part name="parameters" element="tns:Search" />
+  </wsdl:message>
+  <wsdl:message name="SearchSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuntetificarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:AuntetificarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="AuntetificarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:AuntetificarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="getusuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:getusuarios" />
+  </wsdl:message>
+  <wsdl:message name="getusuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:getusuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getopcionesSoapIn">
+    <wsdl:part name="parameters" element="tns:getopciones" />
+  </wsdl:message>
+  <wsdl:message name="getopcionesSoapOut">
+    <wsdl:part name="parameters" element="tns:getopcionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistraLogAuditoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistraLogAuditoria" />
+  </wsdl:message>
+  <wsdl:message name="RegistraLogAuditoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistraLogAuditoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="listaGrupoSoapIn">
+    <wsdl:part name="parameters" element="tns:listaGrupo" />
+  </wsdl:message>
+  <wsdl:message name="listaGrupoSoapOut">
+    <wsdl:part name="parameters" element="tns:listaGrupoResponse" />
+  </wsdl:message>
+  <wsdl:message name="listaGrupoDetalleSoapIn">
+    <wsdl:part name="parameters" element="tns:listaGrupoDetalle" />
+  </wsdl:message>
+  <wsdl:message name="listaGrupoDetalleSoapOut">
+    <wsdl:part name="parameters" element="tns:listaGrupoDetalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="getGeneralDataSoapIn">
+    <wsdl:part name="parameters" element="tns:getGeneralData" />
+  </wsdl:message>
+  <wsdl:message name="getGeneralDataSoapOut">
+    <wsdl:part name="parameters" element="tns:getGeneralDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtieneSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:obtieneSession" />
+  </wsdl:message>
+  <wsdl:message name="obtieneSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:obtieneSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtieneCodUsuaSoapIn">
+    <wsdl:part name="parameters" element="tns:obtieneCodUsua" />
+  </wsdl:message>
+  <wsdl:message name="obtieneCodUsuaSoapOut">
+    <wsdl:part name="parameters" element="tns:obtieneCodUsuaResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtieneNombreSoapIn">
+    <wsdl:part name="parameters" element="tns:obtieneNombre" />
+  </wsdl:message>
+  <wsdl:message name="obtieneNombreSoapOut">
+    <wsdl:part name="parameters" element="tns:obtieneNombreResponse" />
+  </wsdl:message>
+  <wsdl:portType name="eServiceSoap">
+    <wsdl:operation name="existeUsuario">
+      <wsdl:input message="tns:existeUsuarioSoapIn" />
+      <wsdl:output message="tns:existeUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFullName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the full name of a user from Active Directory.</wsdl:documentation>
+      <wsdl:input message="tns:GetFullNameSoapIn" />
+      <wsdl:output message="tns:GetFullNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMembership">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a generic list of the Active Directory security groups that a user is a member of.</wsdl:documentation>
+      <wsdl:input message="tns:GetGroupMembershipSoapIn" />
+      <wsdl:output message="tns:GetGroupMembershipSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authenticates a user to Active Directory based on their username and password.</wsdl:documentation>
+      <wsdl:input message="tns:AuthenticateUserSoapIn" />
+      <wsdl:output message="tns:AuthenticateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUserToGroup">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Checks to see if a user is in the specified security group.  Returns true if they are a member, and false if they are not.</wsdl:documentation>
+      <wsdl:input message="tns:AuthenticateUserToGroupSoapIn" />
+      <wsdl:output message="tns:AuthenticateUserToGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="valida_user">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Checks to see if a user is in the specified security group.  Returns true if they are a member, and false if they are not.</wsdl:documentation>
+      <wsdl:input message="tns:valida_userSoapIn" />
+      <wsdl:output message="tns:valida_userSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches Active Directory For Users</wsdl:documentation>
+      <wsdl:input message="tns:SearchSoapIn" />
+      <wsdl:output message="tns:SearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuntetificarUsuario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches users on eSeguridad</wsdl:documentation>
+      <wsdl:input message="tns:AuntetificarUsuarioSoapIn" />
+      <wsdl:output message="tns:AuntetificarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getusuarios">
+      <wsdl:input message="tns:getusuariosSoapIn" />
+      <wsdl:output message="tns:getusuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getopciones">
+      <wsdl:input message="tns:getopcionesSoapIn" />
+      <wsdl:output message="tns:getopcionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistraLogAuditoria">
+      <wsdl:input message="tns:RegistraLogAuditoriaSoapIn" />
+      <wsdl:output message="tns:RegistraLogAuditoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listaGrupo">
+      <wsdl:input message="tns:listaGrupoSoapIn" />
+      <wsdl:output message="tns:listaGrupoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listaGrupoDetalle">
+      <wsdl:input message="tns:listaGrupoDetalleSoapIn" />
+      <wsdl:output message="tns:listaGrupoDetalleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getGeneralData">
+      <wsdl:input message="tns:getGeneralDataSoapIn" />
+      <wsdl:output message="tns:getGeneralDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtieneSession">
+      <wsdl:input message="tns:obtieneSessionSoapIn" />
+      <wsdl:output message="tns:obtieneSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtieneCodUsua">
+      <wsdl:input message="tns:obtieneCodUsuaSoapIn" />
+      <wsdl:output message="tns:obtieneCodUsuaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtieneNombre">
+      <wsdl:input message="tns:obtieneNombreSoapIn" />
+      <wsdl:output message="tns:obtieneNombreSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="eServiceSoap" type="tns:eServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="existeUsuario">
+      <soap:operation soapAction="http://tempuri.org/existeUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullName">
+      <soap:operation soapAction="http://tempuri.org/GetFullName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMembership">
+      <soap:operation soapAction="http://tempuri.org/GetGroupMembership" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap:operation soapAction="http://tempuri.org/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUserToGroup">
+      <soap:operation soapAction="http://tempuri.org/AuthenticateUserToGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="valida_user">
+      <soap:operation soapAction="http://tempuri.org/valida_user" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap:operation soapAction="http://tempuri.org/Search" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuntetificarUsuario">
+      <soap:operation soapAction="http://tempuri.org/AuntetificarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getusuarios">
+      <soap:operation soapAction="http://tempuri.org/getusuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getopciones">
+      <soap:operation soapAction="http://tempuri.org/getopciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistraLogAuditoria">
+      <soap:operation soapAction="http://tempuri.org/RegistraLogAuditoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaGrupo">
+      <soap:operation soapAction="http://tempuri.org/listaGrupo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaGrupoDetalle">
+      <soap:operation soapAction="http://tempuri.org/listaGrupoDetalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGeneralData">
+      <soap:operation soapAction="http://tempuri.org/getGeneralData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtieneSession">
+      <soap:operation soapAction="http://tempuri.org/obtieneSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtieneCodUsua">
+      <soap:operation soapAction="http://tempuri.org/obtieneCodUsua" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtieneNombre">
+      <soap:operation soapAction="http://tempuri.org/obtieneNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="eServiceSoap12" type="tns:eServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="existeUsuario">
+      <soap12:operation soapAction="http://tempuri.org/existeUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullName">
+      <soap12:operation soapAction="http://tempuri.org/GetFullName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMembership">
+      <soap12:operation soapAction="http://tempuri.org/GetGroupMembership" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap12:operation soapAction="http://tempuri.org/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUserToGroup">
+      <soap12:operation soapAction="http://tempuri.org/AuthenticateUserToGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="valida_user">
+      <soap12:operation soapAction="http://tempuri.org/valida_user" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap12:operation soapAction="http://tempuri.org/Search" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuntetificarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/AuntetificarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getusuarios">
+      <soap12:operation soapAction="http://tempuri.org/getusuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getopciones">
+      <soap12:operation soapAction="http://tempuri.org/getopciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistraLogAuditoria">
+      <soap12:operation soapAction="http://tempuri.org/RegistraLogAuditoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaGrupo">
+      <soap12:operation soapAction="http://tempuri.org/listaGrupo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaGrupoDetalle">
+      <soap12:operation soapAction="http://tempuri.org/listaGrupoDetalle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGeneralData">
+      <soap12:operation soapAction="http://tempuri.org/getGeneralData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtieneSession">
+      <soap12:operation soapAction="http://tempuri.org/obtieneSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtieneCodUsua">
+      <soap12:operation soapAction="http://tempuri.org/obtieneCodUsua" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtieneNombre">
+      <soap12:operation soapAction="http://tempuri.org/obtieneNombre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="eService">
+    <wsdl:port name="eServiceSoap" binding="tns:eServiceSoap">
+      <soap:address location="http://192.168.1.6/eService/eservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="eServiceSoap12" binding="tns:eServiceSoap12">
+      <soap12:address location="http://192.168.1.6/eService/eservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -12,6 +12,17 @@ namespace eValorados_Web.Controllers
 {
     public class MovimientoController : Controller
     {
+        private MovimientoDAO _movimientoDAO = null;
+        private MovimientoDAO movimientoDAO
+        {
+            get
+            {
+                if (_movimientoDAO == null)
+                    _movimientoDAO = new MovimientoDAO();
+                return _movimientoDAO;
+            }
+        }
+
         private AgenciaDAO _AgenciaDAO = null;
         private AgenciaDAO AgenciaDAO
         {
@@ -46,10 +57,40 @@ namespace eValorados_Web.Controllers
             }
         }
 
-        public ActionResult Ajustar()
+        public ActionResult Ajustar(Movimiento movimiento, Almacen almacen, TipoMovimiento tipomovimiento)
         {
             ViewData["Agencias"] = AgenciaDAO.LoadAll().Where(x => x.IsActivo == true);
             ViewData["TipoMovimiento"] = TipoMovimientoDAO.LoadAll();
+            
+            //var cantidadmax = movimiento.Almacen.CantidadMaxima;
+            //var inventarioreal = movimiento.Almacen.InventarioReal;
+            //var accion = movimiento.TipoMovimiento.Accion;
+            var cantidad = movimiento.Cantidad;
+            var cantidadmax = almacen.CantidadMaxima;
+            var inventarioreal = almacen.InventarioReal;
+            var accion = tipomovimiento.Accion;
+
+            try
+            {
+                var _a = "a";
+                ref_ajustes.eServiceSoapClient cs_ = new ref_ajustes.eServiceSoapClient();
+                string b = cs_.existeUsuario(_a);
+                ModelState.AddModelError(string.Empty, String.Format(b));
+                //referencia_ajuste.ServiceSoapClient cs = new referencia_ajuste.ServiceSoapClient();
+                //var a = cs.retornardia();
+                //ModelState.AddModelError(string.Empty, String.Format(a));
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError(string.Empty, String.Format("deve compilar el web service"));
+                return View();
+            }
+
+
+            if (accion == "+" && (cantidad + inventarioreal > cantidadmax))
+                ModelState.AddModelError("CustomError", String.Format("no es posible realizar esta accion porque se ha sobrepasado la cantidad maxima"));
+            if (accion == "-" && (inventarioreal - cantidad < 0))
+                ModelState.AddModelError("CustomError", String.Format("no es posible realizar esta accion porque no hay suficientes fondos"));
             return View();
         }
 

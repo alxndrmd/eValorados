@@ -7,8 +7,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace eValorados_Web.Controllers
 {
+    
     public class AlmacenController : Controller
     {
         private AlmacenDAO _almacenDAO = null;
@@ -107,18 +109,19 @@ namespace eValorados_Web.Controllers
                 var _almacen = AlmacenDAO.LoadById(id);
 
                 
-                    //o el almacen ya esta desactivo
+                    //prueba
+                //if()
 
-                if (almacen.CantidadMaxima < _almacen.InventarioReal && almacen.CantidadMaxima < _almacen.InventarioVirtual)
+                var inventario_mayor_cant_max = almacen.CantidadMaxima < _almacen.InventarioReal && almacen.CantidadMaxima < _almacen.InventarioVirtual;
+                var inventario_no_vacio = !almacen.IsActivo && (_almacen.InventarioReal > 0 || _almacen.InventarioVirtual > 0);
+                
+                if (inventario_mayor_cant_max || inventario_no_vacio)
                 {
-                        ModelState.AddModelError("CustomError", String.Format("no es posible desactivar el almacen porque algun inventario sobrepasa a la cantidad maxima", id));
-                       
-                  return View();
-                }
+                    if (inventario_mayor_cant_max)
+                        ModelState.AddModelError(string.Empty, String.Format("no es posible desactivar el almacen porque algun inventario sobrepasa a la cantidad maxima", id));
 
-                if (!almacen.IsActivo && (_almacen.InventarioReal > 0 || _almacen.InventarioVirtual > 0))
-                {
-                    ModelState.AddModelError("CustomError", String.Format("No es posible desactivar el almacen con id=[{0}] porque todavía cuenta con inventario.", id));
+                    if (inventario_no_vacio)
+                        ModelState.AddModelError(string.Empty, String.Format("No es posible desactivar el almacen con id=[{0}] porque todavía cuenta con inventario.", id));
                     return View();
                 }
                 SessionHelper _sessionHelper = new SessionHelper();
@@ -126,6 +129,9 @@ namespace eValorados_Web.Controllers
                 {
 
                     AlmacenDAO.Update(almacen);
+                    //web service 
+                    
+
                     transaction.Commit();
                 }
                 return RedirectToAction("Index");
