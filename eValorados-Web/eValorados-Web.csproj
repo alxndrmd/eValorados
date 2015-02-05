@@ -50,6 +50,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -147,6 +149,7 @@
     <Compile Include="Persistence\AgenciaDAO.cs" />
     <Compile Include="Persistence\AlmacenDAO.cs" />
     <Compile Include="Persistence\MotivoMovimientoDAO.cs" />
+    <Compile Include="Persistence\MovimientoDAO.cs" />
     <Compile Include="Persistence\NHibernateHelper.cs" />
     <Compile Include="Persistence\BaseDAO.cs" />
     <Compile Include="Persistence\TipoAgenciaDAO.cs" />
@@ -155,6 +158,23 @@
     <Compile Include="Persistence\ValoradoDAO.cs" />
     <Compile Include="Persistence\SessionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\referencia_ajuste\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ref_ajustes\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -164,6 +184,86 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="Service References\ref_ajustes\eservice.disco" />
+    <None Include="Service References\ref_ajustes\configuration91.svcinfo" />
+    <None Include="Service References\ref_ajustes\configuration.svcinfo" />
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.AuntetificarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.AuthenticateUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.AuthenticateUserToGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.DatosDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.existeUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.GetFullNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.getGeneralDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.GetGroupMembershipResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.getopcionesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.getusuariosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.GrupoDetalleDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.GrupoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.LDAPSearchResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.listaGrupoDetalleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.listaGrupoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.obtieneCodUsuaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.obtieneNombreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.obtieneSessionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.OpcionDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.RegistraLogAuditoriaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.SearchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.UsuarioDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ref_ajustes\eValorados_Web.ref_ajustes.valida_userResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ref_ajustes\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="WebForm1.aspx" />
     <EmbeddedResource Include="Maps\Agencia.hbm.xml" />
     <EmbeddedResource Include="Maps\Almacen.hbm.xml" />
     <EmbeddedResource Include="Maps\MotivoMovimiento.hbm.xml" />
@@ -196,6 +296,19 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Service References\referencia_ajuste\eValorados_Web.referencia_ajuste.HelloWorldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\referencia_ajuste\eValorados_Web.referencia_ajuste.retornardiaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\referencia_ajuste\Service.disco" />
+    <None Include="Service References\referencia_ajuste\configuration91.svcinfo" />
+    <None Include="Service References\referencia_ajuste\configuration.svcinfo" />
+    <None Include="Service References\referencia_ajuste\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -241,8 +354,12 @@
     <Content Include="Views\TipoMovimiento\Edit.cshtml" />
     <Content Include="Views\Movimiento\Ajustar.cshtml" />
     <Content Include="Views\Ajustes\Ajustar.cshtml" />
+    <None Include="Service References\referencia_ajuste\Service.wsdl" />
+    <None Include="Service References\ref_ajustes\eservice.wsdl" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -250,6 +367,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\referencia_ajuste\" />
+    <WCFMetadataStorage Include="Service References\ref_ajustes\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
