@@ -356,6 +356,8 @@
     <Content Include="Views\Ajustes\Ajustar.cshtml" />
     <None Include="Service References\referencia_ajuste\Service.wsdl" />
     <None Include="Service References\ref_ajustes\eservice.wsdl" />
+    <Content Include="Views\Movimiento\Abastecer.cshtml" />
+    <Content Include="Views\Movimiento\AutoAbastecimiento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
