@@ -20,7 +20,7 @@ namespace eValorados_Web.Models {
         [DisplayName("Central")]
         public virtual bool IsCentral { get; set; }
 
-        [Range(0,9)]
+
         [DisplayName("¿Está activo?")] 
         public virtual bool IsActivo { get; set; }
         public virtual IList<Agencia> Agencias { get; set; }

@@ -20,7 +20,6 @@ namespace eValorados_Web.Models {
         [DisplayName("Dirección")]
         public virtual string Direccion { get; set; }
 
-        [Range(0, 9)]
         [DisplayName("¿Está activo?")]
         public virtual bool IsActivo { get; set; }
         public virtual IList<Almacen> Almacenes { get; set; }

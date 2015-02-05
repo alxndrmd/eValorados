@@ -13,10 +13,12 @@ namespace eValorados_Web.Models {
         public virtual TipoMovimiento TipoMovimiento { get; set; }
         [StringLength(200)]
         public virtual string OtroMotivoMovimiento { get; set; }
+
+
         [Range(0,999999999)]
         public virtual int Cantidad { get; set; }
         public virtual DateTime? FechaMovimiento { get; set; }
-        [Range(0,9)]
+        
         public virtual bool IsTerminado { get; set; }
     }
 }

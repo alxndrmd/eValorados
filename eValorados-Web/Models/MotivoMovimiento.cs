@@ -15,8 +15,7 @@ namespace eValorados_Web.Models {
         [DisplayName("Descripcion")]
         public virtual string Descripcion { get; set; }
 
-        [Range(0, 9)]
-        [DisplayName(" Es Activo ")]
+        [DisplayName("¿Está activo?")] 
         public virtual bool IsActivo { get; set; }
         public virtual IList<Movimiento> Movimientos { get; set; }
     }
