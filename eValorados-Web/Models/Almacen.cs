@@ -17,18 +17,22 @@ namespace eValorados_Web.Models {
         [DisplayName("Valorado")]
         public virtual Valorado Valorado { get; set; }
         
-        [Range(0, 9999)]
+        [Range(0, 999999999)]
         [DisplayName("Cantidad Mínima")]
         public virtual int? CantidadMinima { get; set; }
-        
-        [Range(0,9999)]
+
+        [Range(0, 999999999)]
         [DisplayName("Cantidad Máxima")]
         public virtual int? CantidadMaxima { get; set; }
 
+        [Range(0, 999999999)]
         [DisplayName("Inventario Virtual")]
         public virtual int? InventarioVirtual { get; set; }
+
+        [Range(0, 999999999)]
         [DisplayName("Inventario Real")]
         public virtual int? InventarioReal { get; set; }
+
         [DisplayName("¿Está activo?")]
         public virtual bool IsActivo { get; set; }
         public virtual IList<Movimiento> Movimientos { get; set; }

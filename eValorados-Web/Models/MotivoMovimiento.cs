@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace eValorados_Web.Models {
@@ -10,11 +11,11 @@ namespace eValorados_Web.Models {
         public MotivoMovimiento() {
 			Movimientos = new List<Movimiento>();
         }
-
+        [StringLength(200)]
         [DisplayName("Descripcion")]
         public virtual string Descripcion { get; set; }
 
-        [DisplayName(" Es Activo ")]
+        [DisplayName("¿Está activo?")] 
         public virtual bool IsActivo { get; set; }
         public virtual IList<Movimiento> Movimientos { get; set; }
     }

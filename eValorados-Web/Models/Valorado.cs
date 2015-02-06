@@ -1,6 +1,8 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 
 namespace eValorados_Web.Models {
@@ -10,8 +12,12 @@ namespace eValorados_Web.Models {
 			Almacenes = new List<Almacen>();
         }
         public virtual TipoValorado TipoValorado { get; set; }
+
+        [StringLength(60)]
         public virtual string Descripcion { get; set; }
+        [StringLength(20)]
         public virtual string IdentificadorAdicional { get; set; }
+        [DisplayName("¿Está activo?")] 
         public virtual bool IsActivo { get; set; }
         public virtual IList<Almacen> Almacenes { get; set; }
     }
