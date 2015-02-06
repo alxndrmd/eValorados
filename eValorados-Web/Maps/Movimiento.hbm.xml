@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="eValorados-Web" namespace="eValorados_Web.Models" xmlns="urn:nhibernate-mapping-2.2">
   <class name="Movimiento" table="TB_MOVIMIENTO" lazy="true" >
-    <id name="Id" column="ID" />
+    <id name="Id" column="ID"> 
+        <generator class ="native">
+        <param name ="sequence">SEQ_ID_MOVIMIENTO</param>
+      </generator>
+    </id>
+     
     <many-to-one name="Almacen">
       <column name="ALMACEN" sql-type="NUMBER" not-null="true" />
     </many-to-one>
